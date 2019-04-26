@@ -10,13 +10,25 @@ private:
     int priority;   // Priority number
     string name;    // Patient name
 public:
-    Patient();
+    Patient()
+        { priority = 0; name = ""; }
     Patient(int p, string n)
         { priority = p; name = n; }
     int getPriority(string n)
         { return priority; }
-    void printPatient() const
+    void  printName () const
         { cout << name; }
-    bool operator<(const Patient& name) const;
+    void setPriority(int p)
+        { priority = p; }
+    string getName () const
+        { return name; }
+    void setName(string n)
+        { name = n; }
+    friend bool operator < (const Patient& p1, const Patient& p2)
+        { return p1.priority < p2.priority; }
+    friend bool operator > (const Patient& p1, const Patient& p2)
+        { return p1.priority < p2.priority; }
+    friend bool operator <= (const Patient& p1, const Patient& p2)
+        { return p1.priority <= p2.priority; }
 }; // End Patient
 #endif

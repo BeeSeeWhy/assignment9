@@ -1,15 +1,16 @@
 #ifndef HEAP_
 #define HEAP_
 #include <memory>
-//#include "Patient.h"
+#include <string>
+#include "Patient.h"
 #include "PrecondViolatedExcept.h"
 
-class Heap 
+class Heap
 {
 private:
     static const int ROOT_INDEX = 0;        // Helps with readability
     static const int DEFAULT_CAPACITY = 21; // Small Capacity for testing
-    string items[DEFAULT_CAPACITY];       // Array of heap items
+    Patient items[DEFAULT_CAPACITY];         // Array of heap items
     int itemCount;                          // Current count of heap items
     int maxItems;                           // Maximum capacity of the heap
 
@@ -26,7 +27,7 @@ private:
 
 public:
     Heap();
-    Heap(const string someArray[], const int arraySize);
+    Heap(const Patient someArray[], const int arraySize);
     //~Heap();
 
     // Heap interface public methods
@@ -34,7 +35,7 @@ public:
     int getNumberOfNodes() const;
     int getHeight() const;
     string peekTop() const throw(PrecondViolatedExcept);
-    bool add(const string& newData);
+    bool add(const int& p, const string& n);
     bool remove();
     void clear();
 }; // End Heap

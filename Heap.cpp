@@ -2,7 +2,7 @@
 #include <string>
 #include <utility>
 #include "Heap.h"
-//#include "Patient.h"
+#include "Patient.h"
 
 // -----------------------------------------------------------------------------
 // Private member definitions
@@ -75,7 +75,7 @@ Heap :: Heap()
 
 //
 Heap ::
-Heap(const string someArray[], const int arraySize):
+Heap(const Patient someArray[], const int arraySize):
     itemCount(arraySize), maxItems(2 * arraySize)
 {
     // Copy given values into the array
@@ -109,15 +109,15 @@ string Heap :: peekTop() const throw(PrecondViolatedExcept)
 {
     if (isEmpty())
         throw PrecondViolatedExcept("Attempted peak into an empty heap.");
-    return items[0];
+    return items[0].getName();
 } // End peekTop
 
-bool Heap :: add(const string& newData)
+bool Heap :: add(const int& p, const string& n)
 {
     if (itemCount == maxItems)
         return false;
     // Insert newData into the bottom of the tree
-    items[itemCount] = newData;
+    items[itemCount] = Patient(p, n);
 
     // Trickle new item up to the right spot in the tree
     int newDataIndex = itemCount;
