@@ -21,6 +21,8 @@ int main ()
     cout << ER.peekTop() << " will now see the doctor.\n";
     ER.remove();
     cout << ER.peekTop() << " will now see the doctor.\n";
-
+    ER.remove();
+    cout << ER.peekTop() << " will now see the doctor.\n";
+    ER.remove();
     return 0;
 }

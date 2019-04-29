@@ -30,5 +30,7 @@ public:
         { return p1.priority > p2.priority; }
     friend bool operator <= (const Patient& p1, const Patient& p2)
         { return p1.priority <= p2.priority; }
+    friend bool operator >= (const Patient& p1, const Patient& p2)
+        { return p1.priority >= p2.priority; }
 }; // End Patient
 #endif

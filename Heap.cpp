@@ -37,15 +37,16 @@ void Heap :: heapRebuild(int nodeIndex)
     if (!isLeaf(nodeIndex))
     {
         // The root must have a left child; assume it is the larger child
-        int largerChildIndex = 2 * nodeIndex + 1;   // left child index
+        int leftChildIndex = 2 * nodeIndex + 1;   // left child index
+        int rightChildIndex = leftChildIndex + 1;
+        int largerChildIndex = rightChildIndex;
 
-        // Now see if there is a right child which is larger than left child
-        if (items[(2 * nodeIndex) + 2] <= items[itemCount - 1])
-        {
-            int rightChildIndex = 2 * nodeIndex + 2; // right child index
-            if (items[rightChildIndex] > items[largerChildIndex])
-                largerChildIndex = rightChildIndex;  // larger child index
-        } // End if
+        // Check whether right child exists: If so, is left larger?
+        // If no right child, left is larger
+        if ((largerChildIndex >= itemCount) ||
+                (items[leftChildIndex] > items[largerChildIndex]))
+            largerChildIndex = leftChildIndex;  // assumption was wrong
+
         // If item in root is smaller than item in larger child, swap items
         if (items[nodeIndex] < items[largerChildIndex])
         {
@@ -71,6 +72,7 @@ void Heap :: heapCreate()
 Heap :: Heap()
 {
     itemCount = 0;
+    maxItems = 22;
 } // End default constructor
 
 //
